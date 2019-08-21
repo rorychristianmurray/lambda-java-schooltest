@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 
 import org.junit.jupiter.api.Test;
+
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.persistence.EntityNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+//import org.junit.Test;
+
+
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SchoolApplication.class)
@@ -44,18 +51,19 @@ class CourseServiceImplTest
         assertEquals("Data Science", courseService.findCourseById(1).getCoursename());
     }
 
+
+//    @Test(expected = EntityNotFoundException.class)
+//    public void deleteNotFound()
+//    {
+//        courseService.delete(100);
+//        assertEquals(12, courseService.findAll().size());
+//    }
+
     @Test
     public void deleteFound()
     {
         courseService.delete(1);
         assertEquals(11, courseService.findAll().size());
-    }
-
-    @Test (expected = EntityNotFoundException.class)
-    public void deleteNotFound()
-    {
-        courseService.delete(100);
-        assertEquals(12, courseService.findAll().size());
     }
 
 }
