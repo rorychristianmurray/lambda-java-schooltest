@@ -41,4 +41,12 @@ class CourseServiceImplTest
     {
         assertEquals("Data Science", courseService.findCourseById(1).getCoursename());
     }
+
+    @Test
+    public void deleteFound()
+    {
+        courseService.delete(1);
+        assertEquals(11, courseService.findAll().size());
+    }
+
 }
