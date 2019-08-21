@@ -2,6 +2,7 @@ package com.lambdaschool.school.service;
 
 import com.lambdaschool.school.SchoolApplication;
 import com.lambdaschool.school.model.Course;
+import com.lambdaschool.school.model.Instructor;
 import com.lambdaschool.school.repository.InstructorRepository;
 import org.junit.After;
 import org.junit.Before;
@@ -42,6 +43,10 @@ public class CourseServiceImplTest
     @Autowired
     private CourseService courseService;
 
+    // Wire up instructorService
+    @Autowired
+    private InstructorRepository instructorRepository;
+
     @Before
     public void setUp() throws Exception
     {
@@ -72,6 +77,21 @@ public class CourseServiceImplTest
     {
         courseService.delete(1);
         assertEquals(11, courseService.findAll().size());
+    }
+
+    @Test
+    public void save()
+    {
+        // create mock course to save
+        Instructor i1 = instructorRepository.findById(2L).orElseThrow(() -> new EntityNotFoundException(Long.toString(2L)));
+        Course c1 = new Course("Cyber Security", i1);
+        Course newCourse =courseService.save(c1);
+
+        assertNotNull(newCourse);
+
+        Course findCourse = courseService.findCourseById(newCourse.getCourseid());
+        assertEquals(newCourse.getCoursename(), findCourse.getCoursename());
+
     }
 
 }
