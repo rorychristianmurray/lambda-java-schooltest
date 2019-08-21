@@ -54,23 +54,23 @@ class CourseControllerTest
     {
     }
 
-//    @Test
-//    void listAllCourses() throws Exception
-//    {
-//        String apiUrl = "/courses/courses";
-//
-//        // Create mock call
-//        Mockito.when(courseService.findAll()).thenReturn(courseList);
-//
-//        // Create real call
-//
-//        RequestBuilder rb = MockMvcRequestBuilders.get(apiUrl).accept(MediaType.APPLICATION_JSON);
-//        MvcResult r = mockMvc.perform(rb).andReturn();
-//        String tr = r.getResponse().getContentAsString();
-//
-//        ObjectMapper mapper = new ObjectMapper();
-//        String er = mapper.writeValueAsString(courseList);
-//
-//        assertEquals("Rest API Returns List", er, tr);
-//    }
+    @Test
+    void listAllCourses() throws Exception
+    {
+        String apiUrl = "/courses/courses";
+
+        // Create mock call
+        Mockito.when(courseService.findAll()).thenReturn(courseList);
+
+        // Create real call
+
+        RequestBuilder rb = MockMvcRequestBuilders.get(apiUrl).accept(MediaType.APPLICATION_JSON);
+        MvcResult r = mockMvc.perform(rb).andReturn();
+        String tr = r.getResponse().getContentAsString();
+
+        ObjectMapper mapper = new ObjectMapper();
+        String er = mapper.writeValueAsString(courseList);
+
+        assertEquals("Rest API Returns List", er, tr);
+    }
 }
