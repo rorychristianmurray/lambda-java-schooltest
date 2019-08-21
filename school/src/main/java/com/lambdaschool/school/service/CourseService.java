@@ -15,4 +15,6 @@ public interface CourseService
 
     Course findCourseById(long id);
 
+    Course save(Course course);
+
 }
