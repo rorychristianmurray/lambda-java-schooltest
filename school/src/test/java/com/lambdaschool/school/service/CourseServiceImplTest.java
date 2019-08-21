@@ -39,6 +39,6 @@ class CourseServiceImplTest
     @Test
     void findCourseById()
     {
-        assertEquals("Course Name", courseService.findCourseById(1).getCoursename());
+        assertEquals("Data Science", courseService.findCourseById(1).getCoursename());
     }
 }
